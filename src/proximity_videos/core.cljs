@@ -65,13 +65,17 @@
 (defn home! []
   (reset! app-state initial-state))
 
+(defn select-year! [y ev]
+  (.preventDefault ev)
+  (swap! app-state assoc :year y))
+
 ;; -------------------------
 ;; Views
 
 (defn component-year [year]
-  [:div
+  [:div#year-videos
    [:h1.year {:on-click home!} year]
-   (for [[year number title person place] (get-videos-for-year videos year)]
+   (for [[year number title person place] (if (= year "All") videos (get-videos-for-year videos year))]
      [:div.item {:key (str year number)}
       [:video {:src (str year "." number ".mp4")}]
       [:span.caption
@@ -79,11 +83,15 @@
        [:p.alt.who person [:br] " (" place ")"]]])])
 
 (defn component-year-list []
-  [:div
-   (for [y (get-years videos)]
-     [:div {:key y
-            :on-click (fn [ev] (.preventDefault ev) (swap! app-state assoc :year y))}
-      [:h1.year y]])])
+  [:div#year-list
+   (concat
+     (for [y (get-years videos)]
+       [:div {:key y
+              :on-click (partial select-year! y)}
+        [:h1.year y]])
+     [[:div {:key "all"
+             :on-click (partial select-year! "All")}
+       [:h1.year "View All"]]])])
 
 (defn home-page []
   (let [year (@app-state :year)
