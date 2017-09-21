@@ -37,7 +37,7 @@
                          :pretty-print  true}
                         :figwheel
                         {:on-jsload "proximity-videos.core/mount-root"
-                         :open-urls ["http://localhost:3449/index.html"]}}
+                         :websocket-host :js-client-host}}
                        :release
                        {:source-paths ["src" "env/prod/cljs"]
                         :compiler
