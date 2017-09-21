@@ -91,10 +91,12 @@
    (concat
      (for [y (get-years videos)]
        [:div {:key y
-              :on-click (partial select-year! y)}
+              :on-click (partial select-year! y)
+              :on-touch-end (partial select-year! y)}
         [:h1.year y]])
      [[:div {:key "all"
-             :on-click (partial select-year! "All")}
+             :on-click (partial select-year! "All")
+             :on-touch-end (partial select-year! "All")}
        [:h1.year "View All"]]])])
 
 (defn home-page []
