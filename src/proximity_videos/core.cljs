@@ -72,6 +72,10 @@
 ;; -------------------------
 ;; Views
 
+(defn component-back-button []
+  [:div#back {:on-click home!}
+   [:img {:src "img/back.svg"}]])
+
 (defn component-year [year]
   [:div#year-videos
    [:h1.year {:on-click home!} year]
