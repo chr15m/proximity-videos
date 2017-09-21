@@ -5,7 +5,6 @@ body {
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   font-size: 1.125em;
-  line-height: 1.5em;
   background-image: url("../img/bg.jpg");
   background-size: cover;
   background-attachment: fixed;
@@ -23,7 +22,7 @@ body {
 }
 
 .alt {
-  font-family: 'Avenir Light Oblique', 'Open Sans', serif;
+  font-family: 'Avenir', 'Open Sans', sans-serif;
   font-weight: 300;
 }
 
@@ -56,6 +55,7 @@ video {
   padding-bottom: 1.5em;
   font-size: 4em;
   font-weight: bold;
+  font-family: "HelveticaNeue-CondensedBlack", Arial;
   text-shadow: 0px 0px 10px rgba(50,50,50,0.5);
   cursor: pointer;
   width: 200px;
@@ -79,6 +79,7 @@ video {
   float: left;
   display: inline-block;
   width: 100%;
+  font-family: "AvenirBook-Oblique", 'Open Sans', sans-serif;
 }
 
 #container .item .caption p {
@@ -91,7 +92,9 @@ video {
 }
 
 #container .item .caption p.who {
+  margin-top: 0.25em;
   float: right;
   text-align: right;
+  font-family: "AvenirLight", 'Open Sans', sans-serif;
 }
 
