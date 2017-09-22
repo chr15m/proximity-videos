@@ -84,8 +84,10 @@
 
 (defn component-video-inner [year filename]
   [:video {:controls true
-           :autoPlay true}
-   [:source {:src (str "video/" year "/ProximityArchive_" year "_" filename ".mov")}]])
+           :autoPlay true
+           :preload "auto"}
+   [:source {:src (str "video/" year "/ProximityArchive_" year "_" filename ".mov")}]
+   [:source {:src (str "video/" year "/ProximityArchive_" year "_" filename ".mp4")}]])
 
 (def component-video
   (with-meta
