@@ -101,15 +101,14 @@
   [:div#back {:on-click home!}
    [:img {:src "img/back.svg"}]])
 
-(defn component-year [year]
+(defn component-year [year-selected]
   [:div#year-videos
    [component-back-button]
-   [:h1.year {:on-click home!} year]
-   (for [[year number filename title person place] (if (= year "All") videos (get-videos-for-year videos year))]
-     [:div.item {:key (str year number)}
-      ;[:video {:controls true} [:source {:src (str "video/" year "/ProximityArchive_" year "_" filename ".mp4") :type "video/mp4"}]]
-      [:img {:on-click #(swap! app-state assoc :video filename)
-             :src (str "video/" year "/ProximityArchive_" year "_" filename ".png")}]
+   [:h1.year {:on-click home!} year-selected]
+   (for [[video-year number filename title person place] (if (= year-selected "All") videos (get-videos-for-year videos year-selected))]
+     [:div.item {:key (str video-year number)}
+      [:img {:on-click #(swap! app-state assoc :video filename :year video-year)
+             :src (str "video/" video-year "/ProximityArchive_" video-year "_" filename ".png")}]
       [:span.caption
        [:p title]
        [:p.alt.who person [:br] " (" place ")"]]])])
