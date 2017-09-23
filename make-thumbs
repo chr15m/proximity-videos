@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for d in public/video/*;
+do
+  echo "Making thumbs in $d"
+  for f in $d/*.mp4
+  do
+    ffmpegthumbnailer -i $f -s 230 -o ${f/.mp4/.png}
+  done
+done

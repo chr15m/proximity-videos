@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$1" = "" ]
+then
+  echo $0 video-name
+  echo e.g. ProximityArchive_2012_Hydrosis_Final
+else
+  avconv -i $1.mp4 -vf scale=-1:720 -c:v libx264 -crf 23 -preset ultrafast -c:a copy $1.mov
+fi
